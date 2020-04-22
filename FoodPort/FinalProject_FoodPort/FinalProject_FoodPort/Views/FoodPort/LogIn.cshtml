@@ -1,0 +1,78 @@
+﻿@model FinalProject_FoodPort.Models.LogInModel
+
+@{
+    ViewBag.Title = "LogIn";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+           <div align="center" style="color:red">@ViewBag.error</div>
+            <br/> 
+    @using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>
+                    <h4 style="align-self: center;">
+                       User Log in
+                    </h4>
+                </legend>
+                <br>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">User ID:</label>
+                    @Html.ValidationMessageFor(model => model.UserID)
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            @Html.TextBox("UserID", "", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Password:</label>
+                    @Html.ValidationMessageFor(model => model.Password)
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                                @Html.Password("Password", "", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label">User Type:</label>
+                    @Html.ValidationMessageFor(model => model.UserType)
+                    <div class="col-md-8 selectContainer">
+                        <div class="input-group">
+                                @Html.DropDownList("UserType", ViewBag.logintypes as List<SelectListItem>, new {@class="form-control selectpicker" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8 inputGroupContainer">
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.RememberMe)
+                            &nbsp
+                            @Html.LabelFor(model => model.RememberMe)
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.RememberMe)
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-2 control-label"></label>
+                    <div class="col-md-9">
+                       &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLogin&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    </div>
+                </div>
+            </fieldset>
+    }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

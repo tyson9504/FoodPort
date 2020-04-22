@@ -1,0 +1,131 @@
+﻿@model FinalProject_FoodPort.Models.CustomerModel
+
+@{
+    ViewBag.Title = "CreateAccount";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+@ViewBag.error
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            @using (Html.BeginForm("CreateAccount",  
+                        "FoodPort",  
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            Enter Your Details
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name:</label>
+                        
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                
+                                @Html.TextBox("CustomerName", "", new { @class = "form-control" })
+                                
+                             </div>
+                            @Html.ValidationMessageFor(model => model.CustomerName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Email ID:</label>
+                       
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+                                
+                                @Html.TextBox("CustomerEmail", "", new { @class = "form-control" })
+                                
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CustomerEmail)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Phone Number:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+                                
+                                @Html.TextBox("CustomerPhoneNumber", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CustomerPhoneNumber)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Present Address:</label>
+                        
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+                                
+                                @Html.TextBox("CustomerAddress", "", new { @class = "form-control" })
+                                
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CustomerAddress)
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Password:</label>
+                        
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+                                
+                                @Html.Password("CustomerPassword", "", new { @class = "form-control" })
+                                
+                            </div>
+                            @Html.ValidationMessageFor(model => model.CustomerPassword)
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Security Question:</label>
+                        
+                        <div class="col-md-6 selectContainer">
+                            <div class="input-group">
+                                @Html.DropDownList("SecurityQuestion", ViewBag.questions as List<SelectListItem>, new { @class = "form-control selectpicker" })
+                                
+                            </div>
+                            @Html.ValidationMessageFor(model => model.SecurityQuestion)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Security Answer:</label>
+                        
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+                                
+                                @Html.TextBox("SecurityAnswer", "", new { @class = "form-control" })
+                                
+                            </div>
+                            @Html.ValidationMessageFor(model => model.SecurityAnswer)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Image:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <input type="file" name="customerimagedb">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCreate Account&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+

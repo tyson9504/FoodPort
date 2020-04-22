@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FoodPort</title>
+    <link href="~/Content/FoodPortStyleSheet.css" rel="stylesheet" />
+    <style>
+        .footer{
+            border:1px solid black;
+            position:fixed;
+            bottom:0;
+            width:100%;
+            height:30px;
+            background-color:black;
+            color:white;
+        }
+    </style>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+</head>
+<body style="background-color:#98B4E2">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/FoodPort/Index">FoodPort</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/FoodPort/Index">Home</a></li>
+                <li ><a href="/FoodPort/AboutUs">About US</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/FoodPort/CreateAccount">Create Account</a></li>
+                <li><a href="/FoodPort/LogIn" id="login">Log In</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-bottom:100px;">
+         @RenderBody()
+    </div>
+<div class="footer" align="center">Developed By: Souradeep Sengupta, iNautix Batch June, 2017</div>
+</body>
+</html>

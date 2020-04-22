@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FinalProject_FoodPort.Models.CartModel>
+
+@{
+    ViewBag.Title = "ViewCartDetails";
+    Layout = "~/Views/Shared/Customerlayout.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <tr class="success">
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.itemName)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.itemprice)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.itemquantity)
+        </th>
+        <th style="text-align:center">Update Quantity</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.itemName)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.itemprice)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.itemquantity)
+                </td>
+                <td style="text-align:center">
+                    @using (Html.BeginForm("update", "Customer", new { itemid = item.itemID, RestID = item.RestaurantID }))
+                    {<p style="font-size:15px;">@Html.DropDownList("quan", ViewBag.values as List<SelectListItem>) <input type="submit" class="btn btn-warning" value="Update" /></p>}
+</td>
+            <td style="text-align:center">@Html.ActionLink("Remove Item", "remove", new { itemid = item.itemID, RestID = item.RestaurantID })</td>
+        </tr>
+    }
+
+</table>
+    @using (Html.BeginForm("proceedtopay", "Customer", new { id = ViewBag.id }))
+        {
+        <div align="center">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspProceed to Pay&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button></div>
+        }

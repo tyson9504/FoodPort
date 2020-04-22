@@ -1,0 +1,109 @@
+﻿@model IEnumerable<FinalProject_FoodPort.Models.RestaurantModel>
+<script type="text/javascript">
+    $(function () {
+        $('.popup-link').click(function () {
+            var href = $(this).attr('href');
+            $('<div><p class="popup-content"></p></div>').dialog({
+                title: 'Menu',
+                autoOpen: true,
+                modal: true,
+                height: 800,
+                width: 800,
+                open: function () {
+                    $(this).find('.popup-content').load(href);
+                },
+                close: function () {
+                    $(this).dialog('destroy');
+                    location.reload(true);
+                }
+            });
+            return false;
+        });
+        $('.popup-link').click(function () {
+            $('.popup-link').dialog("open");
+        });
+    });
+</script>
+<div align="center">
+    <h2>All Restaurants</h2>
+    <br />
+
+    <table class="table table-hover table-bordered">
+        <tr class="success">
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantName)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantLocality)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantCity)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantState)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantPhoneNumber)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.RestaurantEmailID)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OpenTime)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.CloseTime)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.Status != "Inactive")
+            { 
+            <tr>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantName)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantLocality)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantCity)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantState)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantPhoneNumber)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.RestaurantEmailID)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OpenTime)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.CloseTime)
+                </td>
+                <td style="text-align:center">
+                    <img src=@Html.DisplayFor(modelItem => item.Image) width="50px" height="50px"
+                         alt="" class="img-circle" />
+                </td>
+                <td style="text-align:center">@Html.ActionLink( "View Menu",
+                     "ShowMenu",
+                     "Customer",
+                     new { id = item.RestaurantID},
+                     new { @class = "popup-link" } )</td>
+            </tr>
+        }
+        }
+
+    </table>
+</div>
+<div id="popup">
+
+</div>

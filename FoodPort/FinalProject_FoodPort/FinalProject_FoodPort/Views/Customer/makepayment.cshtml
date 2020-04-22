@@ -1,0 +1,107 @@
+﻿@model FinalProject_FoodPort.ServiceReference1.Transaction
+
+@{
+    ViewBag.Title = "makepayment";
+    Layout = "~/Views/Shared/Customerlayout.cshtml";
+}
+
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            <div align="center" style="color:red">@ViewBag.error</div>
+            <br />
+            @using (Html.BeginForm("transaction", "Customer", new { resid = ViewBag.id, amt = ViewBag.amt }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            Payment Details
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">User Type:</label>
+                        <div class="col-md-8 selectContainer">
+                            <div class="input-group">
+                                @Html.DropDownList("Address", ViewBag.address as List<SelectListItem>, new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Account Number:</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("CustomerAccountNumber", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Account Holder Name:</label>
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("CustomerAccountHolderName", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Account Card Number:</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("AccountCardNumber", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Card Valid From:</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("Validfrom", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Card Valid To:</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("ValidTo", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">CVV:</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.Password("CVV", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Transaction Amount:</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                ₹ @ViewBag.amt
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspMake Payment&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

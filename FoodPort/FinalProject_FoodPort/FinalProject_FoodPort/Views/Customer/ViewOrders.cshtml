@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FinalProject_FoodPort.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Views/Shared/Customerlayout.cshtml";
+}
+<script type="text/javascript">
+
+</script>
+<h2>All Orders</h2>
+
+<table class="table table-hover table-bordered">
+    <tr class="success">
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th style="text-align:center">
+           Restaurant Name
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.TransactionID)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.OrderAmount)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.OrderAddress)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.TransactionID)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.OrderAmount)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.OrderAddress)
+            </td>
+            <td style="text-align:center">
+                @Html.DisplayFor(modelItem => item.OrderStatus)
+            </td>
+            @if (item.OrderStatus != "Cancelled" || item.OrderStatus == "Order Delivered" || item.OrderStatus == "Out for Delivery")
+            { 
+            <td style="text-align:center">
+                @using (Html.BeginForm("cancelOrder","Customer",new {transid=item.TransactionID}))
+                {
+                    <input type="submit" value="Cancel Order" class="btn btn-danger"/>
+                }
+            </td>
+            }
+            else
+            {
+                <td style="text-align:center">
+                    <input type="submit" value="Cancel Order" class="btn btn-block" id="cancel"/>
+                </td>
+            }
+        </tr>
+    }
+
+</table>

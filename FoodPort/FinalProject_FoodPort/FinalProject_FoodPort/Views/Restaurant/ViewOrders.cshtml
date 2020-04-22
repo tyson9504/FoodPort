@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FinalProject_FoodPort.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "ViewOrders";
+    Layout = "~/Views/Shared/RestaurantLayout.cshtml";
+}
+
+<div align="center">
+    <h2>All Orders</h2>
+    <br/>
+    <table class="table table-hover table-bordered">
+        <tr class="success">
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.CustomerNumber)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.TransactionID)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OrderAmount)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OrderAddress)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.OrderStatus)
+            </th>
+            <th style="text-align:center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.OrderStatus != "Cancelled")
+            {
+            <tr>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.CustomerNumber)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.TransactionID)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OrderAmount)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OrderAddress)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.OrderStatus)
+                </td>
+
+                <td style="text-align:center">
+                    @using (Html.BeginForm("ViewOrders", "Restaurant", new { OrderId = item.OrderID }))
+                    {<p style="font-size:15px;">@Html.DropDownList("status", ViewBag.values as List<SelectListItem>) <input type="submit" class="btn btn-warning" value="Update" /></p>}
+                </td>
+          </tr>
+            }
+        }
+
+    </table>
+</div>

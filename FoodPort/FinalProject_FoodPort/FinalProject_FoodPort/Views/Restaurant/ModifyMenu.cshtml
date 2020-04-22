@@ -1,0 +1,68 @@
+﻿@model FinalProject_FoodPort.Models.MenuModel
+
+@{
+    ViewBag.Title = "ModifyMenu";
+    Layout = "~/Views/Shared/RestaurantLayout.cshtml";
+}
+
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            <div align="center" style="color:red">@ViewBag.error</div>
+            <br />
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            User Log in
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Present Item Name:</label>
+                        @Html.ValidationMessageFor(model => model.ItemID)
+                        <div class="col-md-8 selectContainer">
+                            <div class="input-group">
+                                @Html.DropDownList("ItemID", ViewBag.Items as List<SelectListItem>, new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">New Item Name:</label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("name", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Price:</label>
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("itemPrice", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspUpdate&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

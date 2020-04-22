@@ -1,0 +1,103 @@
+﻿@model FinalProject_FoodPort.Models.MenuModel
+
+@{
+    ViewBag.Title = "AddMenu";
+    Layout = "~/Views/Shared/RestaurantLayout.cshtml";
+}
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            <br />
+            @using (Html.BeginForm("AddMenu",
+                        "Restaurant",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            Add New Item
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Name:</label>
+                        @Html.ValidationMessageFor(model => model.ItemName)
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("ItemName", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Price:</label>
+                        @Html.ValidationMessageFor(model => model.ItemPrice)
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("ItemPrice", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Details:</label>
+                        @Html.ValidationMessageFor(model => model.ItemDetails)
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("ItemDetails", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Taste:</label>
+                        @Html.ValidationMessageFor(model => model.ItemTaste)
+                        <div class="col-md-8 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBox("ItemTaste", "", new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Category:</label>
+                        @Html.ValidationMessageFor(model => model.ItemCategory)
+                        <div class="col-md-8 selectContainer">
+                            <div class="input-group">
+                                @Html.DropDownList("ItemCategory", ViewBag.itemcategories as List<SelectListItem>, new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Item Type:</label>
+                        @Html.ValidationMessageFor(model => model.ItemVegNonVeg)
+                        <div class="col-md-8 selectContainer">
+                            <div class="input-group">
+                                @Html.DropDownList("ItemVegNonVeg", ViewBag.itemtype as List<SelectListItem>, new { @class = "form-control selectpicker" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Image:</label>
+
+                        <div class="col-md-8 inputGroupContainer">
+                            <input type="file" name="itemimagedb">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspLogin&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model FinalProject_FoodPort.Models.CustomerModel
+
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/Customerlayout.cshtml";
+}
+
+
+<div align="center">
+    <img src=@Model.CustomerImage width="200px" height="200px"
+         alt="" class="img-circle" />
+    <br/>
+    <br/>
+    <br/>
+    <div style="font-size:15px;">@Html.DisplayFor(model => model.CustomerName)<div>(Customer ID: @Html.DisplayFor(model => model.CustomerID))</div></div>
+    <br/>
+    <p style="font-size:15px;"> <small><cite title="Source Title">@Html.DisplayFor(model => model.CustomerAddress), India</cite></small></p>
+    <br/>
+    <p style="font-size:15px;">Email: @Html.DisplayFor(model => model.CustomerEmail)</p>
+    <p style="font-size:15px;">Phone Number: @Html.DisplayFor(model => model.CustomerPhoneNumber)</p>
+</div>

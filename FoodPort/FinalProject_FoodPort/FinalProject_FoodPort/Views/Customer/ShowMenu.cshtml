@@ -1,0 +1,75 @@
+﻿@model IEnumerable<FinalProject_FoodPort.Models.MenuModel>
+
+<link href="~/Content/FoodPortStyleSheet.css" rel="stylesheet" />
+
+        <div align="center">
+            <h2>Menu</h2>
+            <br />
+            <div id="message" style="color:green;">
+                
+            </div>
+            <div style="color:red;">@ViewBag.error</div>
+            <br />
+
+            <table class="table table-hover table-bordered">
+                <tr class="success">
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemName)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemCategory)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemVegNonVeg)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemPrice)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemDetails)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemTaste)
+                    </th>
+                    <th style="text-align:center">
+                        @Html.DisplayNameFor(model => model.ItemImage)
+                    </th>
+                    <th style="text-align:center">Select</th>
+                </tr>
+
+                @foreach (var item in Model)
+        {
+                    
+            <tr>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.ItemName)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.ItemCategory)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.ItemVegNonVeg)
+                        </td>
+                        <td style="text-align:center">
+                            @Html.DisplayFor(modelItem => item.ItemPrice)
+                        </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.ItemDetails)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.ItemTaste)
+                </td>
+                <td style="text-align:center">
+                    <img src=@item.ItemImage width="100px" height="100px"
+                         alt="" class="img-circle" />
+                </td>
+                        <td style="text-align:center">
+                            @Ajax.ActionLink("Add To Cart", "AddtoCart", new { itemid = item.ItemID, RestID = item.RestaurantID }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "message" })
+                        </td>
+
+                    </tr>
+                    
+        }
+
+            </table>
+</div>

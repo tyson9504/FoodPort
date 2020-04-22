@@ -1,0 +1,86 @@
+﻿@model FinalProject_FoodPort.Models.AdminModel
+
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@ViewBag.error
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            Enter Admin Details
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name:</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+
+                                @Html.TextBox("AdminName", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.AdminName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Email ID:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("AdminEmailID", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.AdminEmailID)
+                        </div>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Password:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.Password("AdminPasswrod", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.AdminPasswrod)
+                        </div>
+                    </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Phone Number:</label>
+
+                            <div class="col-md-6 inputGroupContainer">
+                                <div class="input-group">
+
+                                    @Html.TextBox("AdminPhoneNumber", "", new { @class = "form-control" })
+
+                                </div>
+                                @Html.ValidationMessageFor(model => model.AdminPhoneNumber)
+                            </div>
+                        </div>
+                    
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCreate Account&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

@@ -1,0 +1,121 @@
+﻿@model FinalProject_FoodPort.Models.RestaurantModel
+
+@{
+    ViewBag.Title = "AddRestaurant";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@ViewBag.error
+<div style="font-family: Helvetica;background: #7d8491;">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="form-horizontal">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <legend>
+                        <h4 style="align-self: center;">
+                            Enter Restaurant Details
+                        </h4>
+                    </legend>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name:</label>
+
+                        <div class="col-md-6">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantName", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Locality:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantLocality", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantLocality)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">City:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantCity", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantCity)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">State:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantState", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantState)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Phone Number:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantPhoneNumber", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantPhoneNumber)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">EmailID:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantEmailID", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantEmailID)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">PassWord:</label>
+
+                        <div class="col-md-6 inputGroupContainer">
+                            <div class="input-group">
+
+                                @Html.TextBox("RestaurantPassWord", "", new { @class = "form-control" })
+
+                            </div>
+                            @Html.ValidationMessageFor(model => model.RestaurantPassWord)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"></label>
+                        <div class="col-md-9">
+                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-primary">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspCreate Account&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>

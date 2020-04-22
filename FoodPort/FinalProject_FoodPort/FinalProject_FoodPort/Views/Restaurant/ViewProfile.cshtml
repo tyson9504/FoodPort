@@ -1,0 +1,22 @@
+﻿@model FinalProject_FoodPort.Models.RestaurantModel
+
+@{
+    ViewBag.Title = "ViewProfile";
+    Layout = "~/Views/Shared/RestaurantLayout.cshtml";
+}
+
+<div align="center">
+    <img src=@Model.Image width="200px" height="200px"
+         alt="" class="img-circle" />
+    <br />
+    <br />
+    <br />
+    <div style="font-size:15px;">@Html.DisplayFor(model => model.RestaurantName)<div>(Restaurant ID: @Html.DisplayFor(model => model.RestaurantID))</div></div>
+    <br />
+    <p style="font-size:15px;"> <small><cite title="Source Title">@Html.DisplayFor(model => model.RestaurantLocality), @Html.DisplayFor(model => model.RestaurantCity), @Html.DisplayFor(model => model.RestaurantState), India</cite></small></p>
+    <br />
+    <p style="font-size:15px;">Status: @Html.DisplayFor(model => model.Status)</p>
+    <p style="font-size:15px;">Email: @Html.DisplayFor(model => model.RestaurantEmailID)</p>
+    <p style="font-size:15px;">Phone Number: @Html.DisplayFor(model => model.RestaurantPhoneNumber)</p>
+    <p style="font-size:15px;">Timing: From @Html.DisplayFor(model => model.OpenTime) to @Html.DisplayFor(model => model.CloseTime)</p>
+</div>
